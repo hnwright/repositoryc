@@ -1,3 +1,4 @@
+//A programme to solve linear bivariate Diophanitne equations
 #include <iostream>
 #include <cmath>
 int
@@ -16,7 +17,7 @@ Bezout (int x, int y)
       int l = 1;
       int m;
       int n;
-    erste:
+    clio:
       int i = x % y;
       if (i == 0)
 	{
@@ -52,7 +53,7 @@ Bezout (int x, int y)
 	      x = y;
 	      y = i;
 	    }
-	  goto erste;
+	  goto clio;
 	}
     }
 }
@@ -93,7 +94,7 @@ euterpe:
       int a = sum / g * Bezout (x, y);
       int b = sum / g * Bezout (y, x);
       b = b % (x / g);
-    clio:
+    thalia:
       a = (sum - b * y) / x;
       if (abs (a - b) <= (x + y) / g)
 	{
@@ -118,7 +119,7 @@ euterpe:
 	    {
 	      b = b + abs (x / g);
 	    }
-	  goto clio;
+	  goto thalia;
 	}
     }
 }
