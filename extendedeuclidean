@@ -1,0 +1,66 @@
+// Extended Euclidean Algorithm to give Bezout's Identity
+#include <iostream>
+#include <cmath>
+
+int
+main ()
+{
+  int x;
+  int y;
+  std::cout << "Please enter the value of x: ";
+  std::cin >> x;
+  std::cout << "Please enter the value of y: ";
+  std::cin >> y;
+  int u = x;
+  int v = y;
+  int j = 1;
+  int k = 1 - x / y;
+  int l = 1;
+  int m;
+  int n;
+clio:
+  int i = x % y;
+  if (i == 0)
+    {
+      if (k >= 0)
+	{
+	  std::cout << j << "x" << u << "+" << k << "x" << v << "=" << y;
+	}
+      else
+	{
+	  std::cout << j << "x" << u << "-" << -k << "x" << v << "=" << y;
+	}
+    }
+  else
+    {
+      int f = floor (x / y);
+      if (l == 1)
+	{
+	  j = 1;
+	  k = -f;
+	  x = y;
+	  y = i;
+	  l++;
+	}
+      else if (l == 2)
+	{
+	  m = j;
+	  n = k;
+	  j = -f;
+	  k = 1 + j * k;
+	  x = y;
+	  y = i;
+	  l++;
+	}
+      else
+	{
+	  j = m - f * j;
+	  k = n - f * k;
+	  m = (m - j) / f;
+	  n = (n - k) / f;
+	  x = y;
+	  y = i;
+	}
+      goto clio;
+    }
+}
